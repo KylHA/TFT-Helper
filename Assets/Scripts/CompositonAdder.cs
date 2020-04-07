@@ -28,6 +28,10 @@ public class CompositonAdder : MonoBehaviour
         {
             GameObject selected = SendRayGameObject();
 
+            if (selected != null && CheckChampionExistOnComp(selected))
+                DeleteChampfromComp(selected);  
+            
+
             if (selected != null && CheckChampionExistOnComp(selected) && compChampions.Count != COMP_LIMIT)
             {
                 AddChampToComp(selected);
@@ -81,7 +85,20 @@ public class CompositonAdder : MonoBehaviour
     public void AddToCompArea(GameObject go, Vector3 Comp_pz)
     {
         GameObject CompChamp = Instantiate(go, Comp_pz, new Quaternion(0f, 0f, 0f, 0f)) as GameObject;
+        CompChamp.layer = 8;
         CompChamp.transform.parent = Comp_Parent.transform;
+    }
 
+    void DeleteChampfromComp(GameObject go)
+    {
+        if (go.layer == 8)
+        {
+            DestroyImmediate(go);
+            compChampions.Remove(go);
+            //Fill this
+
+
+
+        }
     }
 }
