@@ -18,7 +18,9 @@ public class CompositonAdder : MonoBehaviour
     private void Awake()
     {
         Comp_Parent = new GameObject();
+        Comp_Parent.name = "Builded_Comp";
         CompAreaStart = new Vector3(0, -6, 0);
+
     }
     private void Update()
     {
@@ -80,5 +82,6 @@ public class CompositonAdder : MonoBehaviour
     {
         GameObject CompChamp = Instantiate(go, Comp_pz, new Quaternion(0f, 0f, 0f, 0f)) as GameObject;
         CompChamp.transform.parent = Comp_Parent.transform;
+
     }
 }
